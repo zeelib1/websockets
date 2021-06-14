@@ -1,0 +1,30 @@
+/* Not necessary CSS */
+
+input, button {
+    border: 1px solid lightgray;
+    border-radius: 0.25em;
+    padding: 0.5em 2em;
+}
+
+button {
+    background-color: seagreen;
+    color: whitesmoke;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+input:focus {
+    border: none;
+}
+
+p {
+    color: red;
+    text-transform: uppercase;
+}
+
+main {
+    margin-left: 25%;
+    margin-top: 5%;
+}

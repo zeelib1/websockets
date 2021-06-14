@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Web Sockets</title>
+</head>
+
+<body>
+    <main>
+        <input id="inputMsg" type="text" placeholder="Write message">
+        <button id="msg-button">send</button>
+        <p id="msg"></p>
+    </main>
+
+    <script>
+        // Grabbing HTML elements
+        const input = document.getElementsByTagName('input')[0];
+        const button = document.getElementById('msg-button');
+
+        // Websocket
+        const ws = new WebSocket('ws://localhost:8080');
+        ws.addEventListener('open', () => {
+            ws.send("Handshake made - sockets opened for communication");
+        });
+
+        ws.addEventListener('message', ({ data }) => {
+            msg.innerHTML = data;
+        });
+
+        // Additional listeners for views
+        button.addEventListener('click', (event) => {
+            if (event.keyCode === 13) {
+                ws.send(input.value);
+
+            }
+        })
+        document.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                ws.send(input.value);
+                input.value = '';
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>
