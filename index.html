@@ -31,12 +31,9 @@
             msg.innerHTML = data;
         });
 
-        // Additional listeners for views
-        button.addEventListener('click', (event) => {
-            if (event.keyCode === 13) {
-                ws.send(input.value);
-
-            }
+        // Additional views listeners
+        button.addEventListener('click', (event) => {    
+                ws.send(input.value);   
         })
         document.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
